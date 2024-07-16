@@ -16,7 +16,7 @@ spec:
       # Must match metadata.name in ConfigMap file
       name: my-project
   credentials: organization-secret
-  # persistent: true
+  persistent: true
   # podSpec:
   #   podTemplate:
   #     spec:
