@@ -36,33 +36,33 @@ spec:
   - podTemplate: # applies for the shard index 0 
       spec: 
         containers:
-          - name: mongodb-enterprise-database
-            resources:
-              limits:
-                cpu: 2
-                memory: 1.5G
-              requests:
-                cpu: 1
-                memory: 1G
+        - name: mongodb-enterprise-database
+          resources:
+            limits:
+              cpu: 2
+              memory: 1.5G
+            requests:
+              cpu: 1
+              memory: 1G
   - podTemplate: # applies for the shard index 1
       spec:
         containers:
-          - name: mongodb-enterprise-database
-            resources:
-              limits:
-                cpu: 2
-                memory: 1.5G
-              requests:
-                cpu: 1
-                memory: 1G
+        - name: mongodb-enterprise-database
+          resources:
+            limits:
+              cpu: 2
+              memory: 1.5G
+            requests:
+              cpu: 1
+              memory: 1G
   - podTemplate: # applies for the shard index 2
       spec:
         containers:
-          - name: mongodb-enterprise-database
-            resources:
-              limits:
-                cpu: 2
-                memory: 1.5G
-              requests:
-                cpu: 1
-                memory: 1G
+        - name: mongodb-enterprise-database
+          resources:
+            limits:
+              cpu: 2
+              memory: 1.5G
+            requests:
+              cpu: 1
+              memory: 1G
