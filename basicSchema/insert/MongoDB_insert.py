@@ -5,11 +5,12 @@ from pymongo import MongoClient
 from dotenv import load_dotenv
 import argparse
 import pymongo.database
+import pymongo.errors
 
 
 def connectToDatabase():
 	# Load environment variables from .env file
-	load_dotenv()
+	load_dotenv(os.path.join(os.path.dirname(__file__), '../.env'))
 
 	# Get the MongoDB connection details from environment variables
 	mongo_uri = os.getenv("MONGO_URI")
@@ -20,8 +21,6 @@ def connectToDatabase():
 	# Connect to the database
 	db = client.get_database("demo")
 	return db
-
-
 
 
 
@@ -153,8 +152,8 @@ if __name__ == "__main__":
 				unique=True
 			)
 			print(f"Created index: {result}")
-		except pymongo.errors.DuplicateKeyError:
-			print("Duplicate key error: The index already exists.")
+		except pymongo.errors.DuplicateKeyError as e:
+			print(f"Duplicate key error: KeyPattern {e.details['keyPattern']}")
 	
 	else:
 		print("No action specified. Use --add_user, --increase_salary, --sabbatical, --delete_employee, --clear_collection, or --create_index.")
