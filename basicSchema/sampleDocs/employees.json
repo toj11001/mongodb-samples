@@ -1,0 +1,28 @@
+[
+  {
+    "emp_no": 1002,
+    "first_name": "Bart",
+    "last_name": "Davis",
+    "gender": "M",
+    "annual_salary": 66766,
+    "hire_date": {
+      "$date": "2012-03-06T00:00:00.000Z"
+    }
+  },
+  {
+    "emp_no": 1000,
+    "first_name": "Charlie",
+    "last_name": "Brown",
+    "gender": "M",
+    "annual_salary": 57395,
+    "hire_date": { "$date": "2016-05-25T13:08:27.445Z" }
+  },
+  {
+    "emp_no": 1001,
+    "first_name": "John",
+    "last_name": "Miller",
+    "gender": "M",
+    "annual_salary": 84276,
+    "hire_date": { "$date": "2011-11-18T23:28:20.380Z" }
+  }
+]
