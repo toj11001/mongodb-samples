@@ -15,6 +15,12 @@ async function main() {
     const collection = db.collection("EBalance");
     const historyCollection = db.collection("EBalanceHistory");
 
+    // Ensure pre-image option is enabled on the collection
+    await db.command({
+      collMod: "EBalance",
+      changeStreamPreAndPostImages: { enabled: true }
+    });
+    
     const changeStream = collection.watch([], {
       changeStreamOptions: { preAndPostImages: { expireAfterSeconds: 100 } },
       fullDocument: 'updateLookup',
