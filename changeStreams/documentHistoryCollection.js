@@ -11,7 +11,7 @@ async function main() {
   try {
     await client.connect();
 
-    const db = client.db("DATEV");
+    const db = client.db("DEMO");
     const collection = db.collection("EBalance");
     const historyCollection = db.collection("EBalanceHistory");
 
