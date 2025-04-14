@@ -12,6 +12,13 @@ async function main() {
     await client.connect();
 
     const db = client.db("DEMO");
+
+    const dbExists = (await client.db().admin().listDatabases()).databases
+      .some(database => database.name === "DEMO");
+
+    if (!dbExists) {
+      throw new Error("Database 'DEMO' does not exist.");
+    }
     const collection = db.collection("EBalance");
     const historyCollection = db.collection("EBalanceHistory");
 
