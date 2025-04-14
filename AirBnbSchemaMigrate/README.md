@@ -64,14 +64,6 @@ The migration is applied selectively to certain documents, allowing both schemas
 3. **Code Implementation**:
    - The provided code handles both schemas by detecting the version of the document and processing it accordingly.
 
-## Example Diagram
-
-Below is a visual representation of the schema migration process:
-
-![Schema Migration Diagram](path/to/diagram.png)
-
-*(Replace `path/to/diagram.png` with the actual path to your image.)*
-
 ## Usage
 
 1. Clone this repository.
