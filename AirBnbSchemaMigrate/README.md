@@ -11,8 +11,8 @@ This project demonstrates how to handle schema migrations in MongoDB using the `
 
 The `sample_airbnb` dataset contains a collection of listings, where each document includes embedded reviews. This project demonstrates a schema migration where:
 
-- **Original Schema**: Reviews are embedded within the listing documents.
-- **Migrated Schema**: Reviews are moved to a separate `reviews` collection and referenced from the listing documents.
+- **Original Schema**: Reviews are embedded within the `listingsAndReviews` collection.
+- **Migrated Schema**: Reviews are moved to a separate `reviews` collection, and the `listingsAndReviews` documents are updated to reflect the migration.
 
 The migration is applied selectively to certain documents, allowing both schemas to coexist in the same collection. The code provided in this project ensures that both data models can be handled seamlessly using the versioning pattern.
 
@@ -25,7 +25,7 @@ The migration is applied selectively to certain documents, allowing both schemas
 ## How It Works
 
 1. **Original Schema**: 
-   - Reviews are embedded directly in the `listings` collection.
+   - Reviews are embedded directly in the `listingsAndReviews` collection.
    - Example:
      ```json
      {
@@ -39,25 +39,37 @@ The migration is applied selectively to certain documents, allowing both schemas
      ```
 
 2. **Migrated Schema**:
-   - Reviews are moved to a separate `reviews` collection and referenced in the `listings` collection.
+   - The `reviews` list in the `listingsAndReviews` collection is emptied, and a `storageType` field is added with the value `referenced`.
+   - Reviews are moved to a separate `reviews` collection, where each review document includes:
+     - `listingId`: The ID of the associated listing.
+     - `id`: An incrementing index unique to the reviews of the listing.
    - Example:
      ```json
      {
        "_id": "listing_id",
        "name": "Sample Listing",
-       "reviews": [
-         { "review_id": "review1" },
-         { "review_id": "review2" }
-       ]
+       "reviews": [],
+       "storageType": "referenced"
      }
      ```
 
      ```json
      {
        "_id": "review1",
-       "listing_id": "listing_id",
+       "listingId": "listing_id",
+       "id": 1,
        "reviewer": "John",
        "comment": "Great place!"
+     }
+     ```
+
+     ```json
+     {
+       "_id": "review2",
+       "listingId": "listing_id",
+       "id": 2,
+       "reviewer": "Jane",
+       "comment": "Loved it!"
      }
      ```
 
