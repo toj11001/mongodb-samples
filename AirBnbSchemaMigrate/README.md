@@ -6,6 +6,10 @@ This project demonstrates how to handle schema migrations in MongoDB using the `
 
 1. **MongoDB Atlas Account**: Ensure you have access to a MongoDB Atlas cluster.
 2. **Sample Data**: Load the `sample_airbnb` dataset into your Atlas cluster. This dataset is available as part of the sample data provided by MongoDB.
+3. **Configuration**:
+   - Copy the `.env.sample` file from the `config` folder and rename it to `.env`.
+   - Update the `MONGO_URI` variable in the `.env` file with your MongoDB connection string.
+   - The `config/db.js` file is used to establish a connection to the MongoDB cluster.
 
 ## Overview
 
