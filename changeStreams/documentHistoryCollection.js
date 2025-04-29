@@ -1,7 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 const dotenv = require("dotenv");
 
-dotenv.config(); // Load environment variables from .env file
+dotenv.config({ path: '../.env' }); // Load environment variables from .env file in the parent directory
 
 const uri = process.env.MONGO_URI;
 
